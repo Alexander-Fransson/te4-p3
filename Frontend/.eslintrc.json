@@ -1,0 +1,37 @@
+// för att hitta problem kör "yarn eslint ./<filename>"
+// för att autofixa problem kör  "yarn eslint ./<fname> --fix"
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/vue3-essential",
+        "plugin:vue/base",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "overrides": [
+    ],
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        /*custom rule, rule? kan användas till att förbjuda syntax genom att kolla AST trädet*/
+        "no-restricted-syntax": [
+            "error", {
+                "selector": "CallExpression[callee.name='deprecatedFunction']",
+                "message": "the function \"deprecatedFunction\" is deprecated try \"notDeprecatedFunction\" instead"
+            }
+        ]
+    }
+}
